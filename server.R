@@ -45,7 +45,7 @@ server <- function(input, output) {
   output$numCountries <- renderText({
     numCountries <- sample() %>% nrow()
     paste0("The number of Countries in this selection is ", numCountries,
-          ". Hover over each Bar to see the number of Billionaires per Country") 
+          ". Hover over each Bar to see the number of Billionaires per country.") 
   })
   
 }
