@@ -44,8 +44,8 @@ server <- function(input, output) {
   ## Renders text saying what how many countries billionaires are from in the graph
   output$numCountries <- renderText({
     numCountries <- sample() %>% nrow()
-    paste0("The number of Countries in this selection is ", numCountries,
-          ". Hover over each Bar to see the number of Billionaires per country.") 
+    paste0("The number of countries in this selection is ", numCountries,
+          ". Hover over each bar to see the number of billionaires per country.") 
   })
   
 }
