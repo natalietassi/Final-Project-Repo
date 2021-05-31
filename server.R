@@ -9,6 +9,36 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
+#Data Table for Average Number of Kids
+averageKids <- data %>% 
+  group_by(Country) %>% 
+  mutate(avgKids = mean(Children, na.rm = TRUE)) %>% 
+  mutate(avgAge = mean(Age, na.rm = TRUE))
+
+#Data Table for Average Age
+agesOnly <- data %>% 
+  group_by(Country) %>% 
+  summarize(avgAge = mean(Age, na.rm = TRUE)) %>% 
+  select(Country, avgAge)
+
+#Data Table for Average Number of Kids
+kidsOnly <- data %>% 
+  group_by(Country) %>% 
+  summarize(avgKids = mean(Children, na.rm = TRUE)) %>% 
+  select(Country, avgKids)
+
+#Data Table of Average Kids and Average Age
+age_kid_Only <- left_join(agesOnly, kidsOnly, by=c("Country" = "Country"))
+
+#Data Table of Average Net Worth
+networthOnly <- data %>% 
+  group_by(Country) %>% 
+  summarize(avgNet = mean(NetWorth, na.rm = TRUE)) %>% 
+  select(Country, avgNet)
+
+#Data Table for Natalie's Tab
+natGraphdata <- left_join(age_kid_Only, networthOnly, by=c("Country" = "Country"))
+
 server <- function(input, output) {
   data <- read.delim("./data/forbes_billionaires_geo.csv", sep=",")
   
@@ -47,5 +77,30 @@ server <- function(input, output) {
     paste0("The number of countries in this selection is ", numCountries,
           ". Hover over each bar to see the number of billionaires per country.") 
   })
+  #Function for Natalie's Tab
+  usedata <- reactive({
+    if(is.null(input$g)) {
+      natGraphdata
+    } else{
+      natGraphdata %>% 
+        filter(avgKids <= input$g) %>% 
+        filter(avgAge <= input$j)
+    }
+  })
+  
+  #output Natalie's Graph
+  output$barNatalie <- renderPlot ({
+    ggplot(usedata(), aes(Country, avgNet)) +
+      geom_bar(stat = "identity", fill = "steelblue") +
+      labs(
+        x="Country",
+        y="Average Net Worth per Billionaire"
+      ) +
+      theme(axis.text.x = element_text(angle=90))
+  })
   
 }
+
+
+
+

@@ -37,6 +37,23 @@ ui <- navbarPage("Forbes Billionaires",
     
   ## FIll in your tabs here, see mine above for an example
   tabPanel("Emily Tab -- change name"),
-  tabPanel("Natalie Tab -- change name")
+  tabPanel("Family Lifestyle of Billionaires",
+           titlePanel("Family Lifestyle of Billionaires"),
+           sidebarLayout(
+             sidebarPanel(
+               sliderInput("j",
+                           "Average Age of Billionaire",
+                           min=min(natGraphdata$avgAge, na.rm = TRUE),
+                           max=max(natGraphdata$avgAge, na.rm = TRUE),
+                           value = 5),
+               sliderInput("g",
+                           "Average Number of Kids per Billionaire",
+                           min=min(natGraphdata$avgKids, na.rm = TRUE),
+                           max=max(natGraphdata$avgKids, na.rm = TRUE),
+                           value = 1)),
+             mainPanel(
+               plotOutput("barNatalie")
+             )
+           ))
 )
   
