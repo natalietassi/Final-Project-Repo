@@ -16,6 +16,10 @@ ui <- navbarPage("Forbes Billionaires",
            
            
            #### Put introduction paragraph here
+           print(paste0("Using the billionaire dataset by Forbes, we have analyzed how billionaires lifestyles 
+                        differ in an attempt to provide entrepenuers with motivation to be the next billionaire
+                        added to the list. We deepdive into their income specifics, family specifics, and how 
+                        these variables differ by location.")),
            
            ## Data Summary Paragraph
            print(paste0("This dataset includes the top billionaire data of ", nrow(data),
@@ -35,8 +39,22 @@ ui <- navbarPage("Forbes Billionaires",
                 mainPanel(plotlyOutput("billionaireGraph"))
             )),
     
-  ## FIll in your tabs here, see mine above for an example
-  tabPanel("Emily Tab -- change name"),
+  ##Tab Panel for Emily's Page
+  tabPanel("Average Income of Billionares",
+           titlePanel("Average Income of Billionaires Examined"),
+           sidebarLayout(
+             sidebarPanel(
+               radioButtons("incomeChoice", "View Income Grouped By: ", choices = c("Country" = "Country", 
+                           "Number of Kids" = "Children", "Self Made vs. Not" = "Self_made"))
+             ),
+             # Show a plot of the income plot
+             mainPanel(
+               plotOutput("incomePlot")
+             )
+           )
+           ),
+  
+  ##Tab Panel for Natalie's Page
   tabPanel("Family Lifestyle of Billionaires",
            titlePanel("Family Lifestyle of Billionaires"),
            sidebarLayout(

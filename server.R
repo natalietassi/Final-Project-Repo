@@ -99,6 +99,46 @@ server <- function(input, output) {
       theme(axis.text.x = element_text(angle=90))
   })
   
+  # Function for Emily's data to filter down the input based on what radio buttons were chosen
+  emIncomeData <- reactive ({
+    if(input$incomeChoice == "Country"){
+      data %>%
+        select(Country, NetWorth) %>%
+        group_by(Country) %>%
+        summarise(mean_networth = mean(NetWorth, na.rm = TRUE))
+      
+    } else if (input$incomeChoice == "Children") {
+      data %>%
+        select(Children, NetWorth) %>%
+        group_by(Children) %>%
+        summarise(mean_networth = mean(NetWorth, na.rm = TRUE))
+    } else {
+      data %>%
+        select(Self_made, NetWorth) %>%
+        group_by(Self_made) %>%
+        summarise(mean_networth = mean(NetWorth, na.rm = TRUE))
+    }
+    
+  })
+  
+  # Output Emily's Graph
+  output$incomePlot <- renderPlot({
+    if(input$incomeChoice == "Country") {
+      ggplot(emIncomeData(), aes(x = Country, y = mean_networth)) +
+        geom_bar(stat = "identity", aes(fill = Country)) +
+        labs(title = "Average Income by Choice", y = "Average Income by Billions")
+    } else if (input$incomeChoice == "Children"){
+      ggplot(emIncomeData(), aes(x = Children, y = mean_networth)) +
+        geom_bar(stat = "identity", aes(fill = Children)) +
+        labs(title = "Average Income by Choice", y = "Average Income by Billions")
+    } else {
+      ggplot(emIncomeData(), aes(x = Self_made, y = mean_networth)) +
+        geom_bar(stat = "identity", aes(fill = Self_made)) +
+        labs(title = "Average Income by Choice", y = "Average Income by Billions")
+    }
+    
+    
+  })
 }
 
 
