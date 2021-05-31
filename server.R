@@ -79,10 +79,18 @@ server <- function(input, output) {
   })
   #Function for Natalie's Tab
   usedata <- reactive({
+    print(head(data))
     if(is.null(input$g)) {
-      natGraphdata
+      data %>% 
+        group_by(Country) %>% 
+        summarise(avgNet = mean(NetWorth, na.rm = TRUE), 
+                                avgKids = mean(Children, na.rm = TRUE), 
+                                               avgKids = mean(Children, na.rm = TRUE))
     } else{
-      natGraphdata %>% 
+      data %>% 
+        group_by(Country) %>% 
+        summarise(avgNet = mean(NetWorth, na.rm = TRUE), avgAge = mean(Age, na.rm = TRUE), avgKids = mean(Children, na.rm = TRUE)) %>% 
+        select(Country, avgNet, avgAge, avgKids) %>% 
         filter(avgKids <= input$g) %>% 
         filter(avgAge <= input$j)
     }
@@ -138,6 +146,19 @@ server <- function(input, output) {
     }
     
     
+  })
+  
+  output$ageSlider <- renderUI({sliderInput("j",
+              "Average Age of Billionaire",
+              min=min(natGraphdata$avgAge, na.rm = TRUE),
+              max=max(natGraphdata$avgAge, na.rm = TRUE),
+              value = 5)
+    })
+  output$kidsSlider <- renderUI({sliderInput("g",
+                                             "Average Number of Kids per Billionaire",
+                                             min=min(natGraphdata$avgKids, na.rm = TRUE),
+                                             max=max(natGraphdata$avgKids, na.rm = TRUE),
+                                             value = 1)
   })
 }
 
