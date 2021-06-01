@@ -62,7 +62,8 @@ ui <- navbarPage("Forbes Billionaires",
                uiOutput("ageSlider"),
                uiOutput("kidsSlider")),
              mainPanel(
-               plotOutput("barNatalie")
+               plotOutput("barNatalie"),
+               textOutput("natText")
              )
            ))
 )

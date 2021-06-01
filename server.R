@@ -9,6 +9,8 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
+data <- read.delim("./data/forbes_billionaires_geo.csv", sep=",")
+
 #Data Table for Average Number of Kids
 averageKids <- data %>% 
   group_by(Country) %>% 
@@ -39,8 +41,7 @@ networthOnly <- data %>%
 #Data Table for Natalie's Tab
 natGraphdata <- left_join(age_kid_Only, networthOnly, by=c("Country" = "Country"))
 
-server <- function(input, output) {
-  data <- read.delim("./data/forbes_billionaires_geo.csv", sep=",")
+server <- (function(input, output) {
   
   sample <- reactive({
     
@@ -160,7 +161,13 @@ server <- function(input, output) {
                                              max=max(natGraphdata$avgKids, na.rm = TRUE),
                                              value = 1)
   })
-}
+  output$natText <- renderText({
+    paste("Entrepreneurs can choose an average age and average number of kids per billionaire depending on their desired
+          futures. The graph shows the average networth of each billionaire in each country where the average age is less than or
+          equal to the inputted age. This will help entrepreneurs determine which country would be the most fitting for their specific
+          family lifestyle goals.")
+  })
+})
 
 
 
