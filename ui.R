@@ -15,6 +15,8 @@ ui <- navbarPage("Forbes Billionaires",
   tabPanel("Introduction and Summary", 
            
            
+           img(src = "Cash-US-1024x512.jpg", width = 1024, height = 512),
+           
            #### Put introduction paragraph here
            print(paste0("In a capitalist country like the United States, wealth plays a large role in policy making and society. 
            As such, it is important to understand how the richest people in the world, like those on the Forbes billionaire list, 
@@ -71,6 +73,18 @@ ui <- navbarPage("Forbes Billionaires",
                plotOutput("barNatalie"),
                textOutput("natText")
              )
-           ))
+           )),
+  tabPanel("Conclusion/Takeaways",
+           titlePanel("Conclusion and Takeaways"),
+           
+           print(paste0("In the future we could advance this project by creating more graphs that allow 
+                        entrepenuers to enter their life preferences for all catagories and see where the most
+                        dense amount of billionaires with similar habits to themselves live. We could also
+                        do personalized information for billionaires on representing their wealth and
+                        lifestyle choices. We could show the spread of weath (or lack there of) around the world
+                        in order for billionaires to see where their money could most impact. In the future we
+                        could gear it towards more audiences so everyone knows how their lifestyle habits
+                        compare to our billionaires today."))
+           )
 )
   
