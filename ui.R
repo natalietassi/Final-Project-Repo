@@ -84,7 +84,16 @@ ui <- navbarPage("Forbes Billionaires",
                         lifestyle choices. We could show the spread of weath (or lack there of) around the world
                         in order for billionaires to see where their money could most impact. In the future we
                         could gear it towards more audiences so everyone knows how their lifestyle habits
-                        compare to our billionaires today."))
+                        compare to our billionaires today.")),
+           
+           print("One fascinating pattern was seen in the figure on the Number 
+                        of Billionaires per Country tab. As seen in the figure, there were
+                        billionaires in 70 different countries in our data. However, when 
+                        you set a higher minimum income, the number of countries go way down.
+                        The vast majority of the richest on this list were from America. For 
+                        example, when the income is set at a $90 billion, 7 of the 8 people
+                        live in America. Thus, for entrprenuers looking to get as rich as
+                        possible, America has the best track record in the past.")
            )
 )
   
