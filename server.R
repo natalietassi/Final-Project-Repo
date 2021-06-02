@@ -11,11 +11,6 @@ library(plotly)
 
 data <- read.delim("./data/forbes_billionaires_geo.csv", sep=",")
 
-#Data Table for Average Number of Kids
-averageKids <- data %>% 
-  group_by(Country) %>% 
-  mutate(avgKids = mean(Children, na.rm = TRUE)) %>% 
-  mutate(avgAge = mean(Age, na.rm = TRUE))
 
 #Data Table for Average Age
 agesOnly <- data %>% 
