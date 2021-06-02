@@ -16,7 +16,13 @@ ui <- navbarPage("Forbes Billionaires",
            
            
            #### Put introduction paragraph here
-           print(paste0("Using the billionaire dataset by Forbes, we have analyzed how billionaires lifestyles 
+           print(paste0("In a capitalist country like the United States, wealth plays a large role in policy making and society. 
+           As such, it is important to understand how the richest people in the world, like those on the Forbes billionaire list, 
+           have made and used their fortunes. This is the purpose of our project. In our study, we seek to answer several questions 
+           that entrepreneurs may have regarding billionaires’ lifestyles. For example, how does the average number of kids per billionaire 
+           vary based on location and age. Where do billionaires live based on net worth? How does net worth change based on 
+           whether or not the billionaire is self-made? All of these questions are relevant to our target audience of entrepreneurs. 
+          Using the billionaire dataset created by Alexander Bader from data on Forbes, we have analyzed how billionaires lifestyles 
                         differ in an attempt to provide entrepenuers with motivation to be the next billionaire
                         added to the list. We deepdive into their income specifics, family specifics, and how 
                         these variables differ by location.")),
