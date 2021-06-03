@@ -9,7 +9,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
-data <- read.delim("./data/forbes_billionaires_geo.csv", sep=",")
+data <- read.delim("forbes_billionaires_geo.csv", sep=",")
 
 ui <- navbarPage("Forbes Billionaires",
   tabPanel("Introduction and Summary", 

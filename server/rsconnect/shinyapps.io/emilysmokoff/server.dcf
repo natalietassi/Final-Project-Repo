@@ -1,0 +1,13 @@
+name: server
+title: server
+username:
+account: emilysmokoff
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4224314
+bundleId: 4674084
+url: https://emilysmokoff.shinyapps.io/server/
+when: 1622742152.86428
+lastSyncTime: 1622742152.86428
+asMultiple: FALSE
+asStatic: FALSE
