@@ -77,6 +77,18 @@ ui <- navbarPage("Forbes Billionaires",
   tabPanel("Conclusion/Takeaways",
            titlePanel("Conclusion and Takeaways"),
            
+           print("The dataset we used was of reasonable quality. Forbes did the majority of the data collection and Alexander Bader 
+           merely cleaned the data into a set and published it on Kaggle. The one change he made was to the self-made section. In Forbes 
+           data, the billionaires are given a specific score on a scale of 1-10 of how self-made their fortunes really are. If they 
+           inherited it all then the billionaire scores a 10, whereas if they overcame struggles and grew up poor, the billionaire 
+           receives a 1. This may cause the data to be biased based on whether or not the billionaire has their struggles in the public eye. 
+           Perhaps the billionaire grew up poor and overcame adversity, but the Forbes data collectors do not know about their hardships. 
+           They would score the billionaire higher on the self-made scale than what is true. In Bader’s dataset the billionaires were given 
+           a simple yes or no to determine if they were self-made. Thus, in using this dataset there was a loss of some information regarding 
+           the level of self-made status for each billionaire, creating some ambiguity and room for bias. Aside from this, the dataset does not 
+           have harmful effects because it merely documents the wealth of people. Although the wealth itself may be considered harmful, 
+           the data presenting the wealth is not. \n"),
+           
            print(paste0("In the future we could advance this project by creating more graphs that allow 
                         entrepenuers to enter their life preferences for all catagories and see where the most
                         dense amount of billionaires with similar habits to themselves live. We could also
@@ -93,7 +105,7 @@ ui <- navbarPage("Forbes Billionaires",
                         The vast majority of the richest on this list were from America. For 
                         example, when the income is set at a $90 billion, 7 of the 8 people
                         live in America. Thus, for entrprenuers looking to get as rich as
-                        possible, America has the best track record in the past.")
+                        possible, America has the best track record in the past."),
            )
 )
   
