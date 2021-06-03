@@ -15,8 +15,6 @@ ui <- navbarPage("Forbes Billionaires",
   tabPanel("Introduction and Summary", 
            
            
-           img(src = "Cash-US-1024x512.jpg", width = 1024, height = 512),
-           
            #### Put introduction paragraph here
            print(paste0("In a capitalist country like the United States, wealth plays a large role in policy making and society. 
            As such, it is important to understand how the richest people in the world, like those on the Forbes billionaire list, 
@@ -27,7 +25,7 @@ ui <- navbarPage("Forbes Billionaires",
           Using the billionaire dataset created by Alexander Bader from data on Forbes, we have analyzed how billionaires lifestyles 
                         differ in an attempt to provide entrepenuers with motivation to be the next billionaire
                         added to the list. We deepdive into their income specifics, family specifics, and how 
-                        these variables differ by location.")),
+                        these variables differ by location.")) , br(), br(),
            
            ## Data Summary Paragraph
            print(paste0("This dataset includes the top billionaire data of ", nrow(data),
@@ -35,7 +33,10 @@ ui <- navbarPage("Forbes Billionaires",
                        " a breakdown of the richest people, there are no outliers,",
                        " since that would make the data incorrect. The data we have",
                        " includes ", tolower(toString(colnames(data)[1:10])), " and ", 
-                        tolower(toString(colnames(data)[11])), "."))),
+                        tolower(toString(colnames(data)[11])), ".")),
+           
+           img(src = "Cash-US-1024x512.jpg", width = 1024, height = 512)
+           ),
   
   ## Billionaires by Country Bar Graph
   tabPanel("Number of Billionaires per Country",
@@ -77,6 +78,15 @@ ui <- navbarPage("Forbes Billionaires",
   tabPanel("Conclusion/Takeaways",
            titlePanel("Conclusion and Takeaways"),
            
+           print("One fascinating pattern was seen in the figure on the Number 
+                        of Billionaires per Country tab. As seen in the figure, there were
+                        billionaires in 70 different countries in our data. However, when 
+                        you set a higher minimum income, the number of countries go way down.
+                        The vast majority of the richest on this list were from America. For 
+                        example, when the income is set at a $90 billion, 7 of the 8 people
+                        live in America. Thus, for entrprenuers looking to get as rich as
+                        possible, America has the best track record in the past."), br(),br(),
+           
            print("The dataset we used was of reasonable quality. Forbes did the majority of the data collection and Alexander Bader 
            merely cleaned the data into a set and published it on Kaggle. The one change he made was to the self-made section. In Forbes 
            data, the billionaires are given a specific score on a scale of 1-10 of how self-made their fortunes really are. If they 
@@ -87,25 +97,18 @@ ui <- navbarPage("Forbes Billionaires",
            a simple yes or no to determine if they were self-made. Thus, in using this dataset there was a loss of some information regarding 
            the level of self-made status for each billionaire, creating some ambiguity and room for bias. Aside from this, the dataset does not 
            have harmful effects because it merely documents the wealth of people. Although the wealth itself may be considered harmful, 
-           the data presenting the wealth is not. \n"),
+           the data presenting the wealth is not."), br(),br(),
            
-           print(paste0("In the future we could advance this project by creating more graphs that allow 
+           
+           
+           print("In the future we could advance this project by creating more graphs that allow 
                         entrepenuers to enter their life preferences for all catagories and see where the most
                         dense amount of billionaires with similar habits to themselves live. We could also
                         do personalized information for billionaires on representing their wealth and
                         lifestyle choices. We could show the spread of weath (or lack there of) around the world
                         in order for billionaires to see where their money could most impact. In the future we
                         could gear it towards more audiences so everyone knows how their lifestyle habits
-                        compare to our billionaires today.")),
-           
-           print("One fascinating pattern was seen in the figure on the Number 
-                        of Billionaires per Country tab. As seen in the figure, there were
-                        billionaires in 70 different countries in our data. However, when 
-                        you set a higher minimum income, the number of countries go way down.
-                        The vast majority of the richest on this list were from America. For 
-                        example, when the income is set at a $90 billion, 7 of the 8 people
-                        live in America. Thus, for entrprenuers looking to get as rich as
-                        possible, America has the best track record in the past."),
+                        compare to our billionaires today.")
            )
 )
   
