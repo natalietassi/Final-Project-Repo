@@ -35,7 +35,7 @@ ui <- navbarPage("Forbes Billionaires",
                        " includes ", tolower(toString(colnames(data)[1:10])), " and ", 
                         tolower(toString(colnames(data)[11])), ".")),
            
-           img(src = "Cash-US-1024x512.jpg", width = 1024, height = 512)
+           img(src = "money.jpg", width = 1024, height = 512)
            ),
   
   ## Billionaires by Country Bar Graph
